@@ -1,0 +1,98 @@
+<html>
+        <head><title>Downloaded HTML</title></head>
+        <body>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;"><!DOCTYPE html>
+<html lang="ha">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mujaheed AI - Malamin JAMB</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',Arial}
+body{background:radial-gradient(circle at top,#1a233a 0%,#0a0e1a 100%);min-height:100vh;color:white;padding:20px;display:flex;flex-direction:column;align-items:center}
+.logo{margin:30px 0 10px;font-size:32px;font-weight:800;letter-spacing:2px;display:flex;align-items:center;gap:12px}
+.sub{color:#94a3b8;font-size:15px;margin-bottom:30px;letter-spacing:1px}
+.card{background:rgba(255,255,255,0.98);color:#0f172a;padding:32px 28px;border-radius:28px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);backdrop-filter:blur(20px)}
+.badge{display:inline-block;background:#e8fef3;color:#00a651;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:18px}
+.price{font-size:36px;font-weight:800;color:#00c25a;margin:10px 0}
+.price span{font-size:16px;color:#64748b;font-weight:400}
+.paybox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:16px;padding:16px;margin:20px 0;display:flex;justify-content:space-between;align-items:center}
+.paybox b{font-size:15px}
+.paybox .num{font-size:18px;letter-spacing:1px}
+.btn-main{width:100%;background:linear-gradient(135deg,#00d26a,#00a651);color:white;padding:18px;border:none;border-radius:16px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 10px 20px rgba(0,210,106,0.3);transition:0.2s}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(0,210,106,0.4)}
+.btn-wa{width:100%;background:white;border:2px solid #e2e8f0;color:#0f172a;padding:14px;border-radius:16px;font-size:14px;font-weight:600;margin-top:12px;display:flex;justify-content:center;align-items:center;gap:8px;text-decoration:none}
+.trust{margin-top:20px;display:flex;gap:12px;justify-content:center;color:#64748b;font-size:11px}
+.trust span{display:flex;align-items:center;gap:4px}
+.chat{display:none;max-width:420px;width:100%}
+.msg{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);padding:14px 16px;border-radius:18px;margin:10px 0;color:white;line-height:1.5}
+.input-bar{position:fixed;bottom:20px;left:20px;right:20px;max-width:420px;margin:0 auto;background:rgba(15,23,42,0.9);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:8px;display:flex;gap:8px;backdrop-filter:blur(20px)}
+.input-bar input{flex:1;background:transparent;border:none;color:white;padding:12px;outline:none}
+.input-bar button{background:#00d26a;border:none;color:white;width:44px;height:44px;border-radius:12px;font-weight:bold}
+</style>
+</head>
+<body>
+
+<div class="logo">🤖 MUJAHEED AI</div>
+<div class="sub">MALAMIN JAMB DAGA KANO</div>
+
+<div class="card" id="biyaCard">
+<div class="badge">● LIVE YANZU - AKWAI WURI</div>
+<h3 style="font-size:18px">Shiga Ajin Mujaheed AI na Musamman</h3>
+<p style="color:#64748b;font-size:13px;margin-top:8px;line-height:1.5">Maths, English, Biology, Chemistry - Duk da Hausa mai sauki. Amsa a cikin dakika 3.</p>
+
+<div class="price">₦1000 <span>/ Wata guda</span></div>
+
+<div class="paybox">
+<div><div style="color:#64748b;font-size:11px">BIYA ZUWA</div><b>OPay</b></div>
+<div class="num"><b>8133661931</b></div>
+</div>
+
+<button class="btn-main" onclick="biya()">Na Biya - Shiga Ajin Yanzu →</button>
+<a class="btn-wa" href="https://wa.me/2348133661931?text=Salam%20Mujaheed,%20Na%20biya%20N1000%20na%20Mujaheed%20AI.%20Ga%20sheda:">💬 Tura Shedar Biya a WhatsApp</a>
+
+<div class="trust">
+<span>🔒 100% Tsaro</span>
+<span>⚡ Amsa Da Sauri</span>
+<span>🎓 Dalibai 500+</span>
+</div>
+</div>
+
+<div class="chat" id="chatBox">
+<div class="msg"><b>Mujaheed AI:</b> Sannu dan uwa! Barka da zuwa ajin mu na musamman. Me kake son in koya maka yau?</div>
+<div id="msgs"></div>
+<div style="height:80px"></div>
+<div class="input-bar">
+<input id="q" placeholder="Rubuta tambayarka anan...">
+<button onclick="tambaya()">↑</button>
+</div>
+</div>
+
+<script>
+const SERVER_URL = "https://mujaheed-ai.onrender.com";
+async function biya(){
+  let c=prompt("Saka CODE na sirri da aka tura maka a WhatsApp (08133661931):");
+  if(!c) return;
+  try{
+    let r=await fetch(SERVER_URL+'/verify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:c})});
+    let d=await r.json();
+    if(d.ok){document.getElementById('biyaCard').style.display='none';document.querySelector('.logo').style.display='none';document.querySelector('.sub').style.display='none';document.getElementById('chatBox').style.display='block';}
+    else{alert("Code ba daidai bane. Da farko ka biya zuwa 8133661931 sannan ka tura sheda a WhatsApp 08133661931");}
+  }catch(e){
+    // Don gwaji a waya ba tare da server ba - yi amfani da MUJ-8133-01
+    if(c.trim().toUpperCase()=="MUJ-8133-01" || c.trim()=="KANO-2024"){
+      document.getElementById('biyaCard').style.display='none';document.querySelector('.logo').style.display='none';document.querySelector('.sub').style.display='none';document.getElementById('chatBox').style.display='block';
+    } else { alert("Code ba daidai ba! Gwada: MUJ-8133-01 (don gwaji)"); }
+  }
+}
+async function tambaya(){
+  let t=document.getElementById('q').value; if(!t) return;
+  document.getElementById('msgs').innerHTML+=`<div class="msg" style="background:rgba(0,210,106,0.15);border-color:rgba(0,210,106,0.3);margin-left:40px">Kai: ${t}</div>`;
+  document.getElementById('q').value=""; document.getElementById('msgs').innerHTML+=`<div class="msg" id="loading">Mujaheed AI yana bincike...</div>`;
+  try{let r=await fetch(SERVER_URL+'/tambaya',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tambaya:t})});let d=await r.json();document.getElementById('loading').remove();document.getElementById('msgs').innerHTML+=`<div class="msg"><b>Mujaheed AI:</b> ${d.amsa}</div>`;}catch(e){document.getElementById('loading').remove();document.getElementById('msgs').innerHTML+=`<div class="msg"><b>Mujaheed AI (Demo):</b> Na gane tambayarka "${t}". Wannan demo ne. Idan ka loda server.py a Render, zan baka amsa ta gaske da Hausa!</div>`;}
+}
+</script>
+</body>
+</html></pre>
+        </body>
+    </html>

@@ -1,0 +1,9 @@
+<html>
+        <head><title>Downloaded HTML</title></head>
+        <body>
+            <pre style="white-space: pre-wrap; word-wrap: break-word;">Flask
+flask-cors
+google-generativeai
+gunicorn</pre>
+        </body>
+    </html>
